@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Upload Employee</title>
+</head>
+<body>
+<h3>Employee Management</h3>
+<p>
+    <a th:href="@{/employee/create}">
+        Add new Employees
+    </a>
+</p>
+<table id="employee">
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Address</td>
+        <td>Email</td>
+        <td>Salary</td>
+        <td>Image</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employees : ${employee}">
+        <td th:text="${employees.name}"></td>
+        <td th:text="${employees.address}"></td>
+        <td th:text="${employees.email}"></td>
+        <td th:text="${employees.salary}"></td>
+        <td><img width="100" height="100" th:src="@{'/image'+${employees.image}}"></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
